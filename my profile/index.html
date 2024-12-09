@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.rawgit.com/exif-js/exif-js/master/exif.js"></script> <!-- EXIF.js -->
+</head>
+<body>
+    <div id="game-container">
+        <h1>Waste Management Gamification</h1>
+
+        <div id="task-container">
+            <h2>Tasks:</h2>
+            <button id="task1">Sort Plastic Waste</button>
+            <button id="task2">Schedule Pickup</button>
+            <button id="task3">Donate Clothes</button>
+
+            <!-- Container for dynamically adding image input -->
+            <div id="image-upload-container"></div>
+        </div>
+
+        <div id="user-status">
+            <h3>Your Points: <span id="points">0</span></h3>
+            <div id="progress-container">
+                <progress id="progress-bar" value="0" max="100"></progress>
+                <p id="progress-text">0/100 Points</p>
+            </div>
+        </div>
+
+        <div id="reward">
+            <h3>Rewards:</h3>
+            <p id="reward-text">Keep going! Earn rewards for completing tasks!</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

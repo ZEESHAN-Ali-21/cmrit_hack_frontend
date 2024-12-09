@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url('https://www.excellentwebworld.com/wp-content/uploads/2020/06/Smart-Waste-Management-Solution-Using-IoT.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            background-color: rgba(0, 123, 255, 0.8); /* Added transparency to improve text readability */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(233, 236, 239, 0.7); /* Light transparency for hero section */
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .ai-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .ai-section h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .ai-section p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <h1>AI Waste Identification</h1>
+        <p>Upload an image of your waste to identify its type.</p>
+    
+        <input type="file" id="imageInput" accept="image/*">
+        <button id="submitButton">Submit</button>
+        <div id="imageContainer">
+            <img id="uploadedImage" src="#" alt="Uploaded Image" hidden>
+        </div>
+    
+        <div id="output">Waiting for an image...</div>
+    <header>
+        <h1>Welcome to Smart Waste Management</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#ai">AI Waste Identification</a></li> <!-- Added link to AI section -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Discover Amazing Features</h1>
+        <p>Your journey to better solutions starts here.</p>
+    </div>
+    
+    <section id="ai" class="ai-section">
+        <h2>AI Waste Identification</h2>
+        <p>
+            Our AI-powered waste identification system uses advanced image recognition technology to automatically 
+            identify and categorize different types of waste. This process is crucial for efficient recycling and 
+            waste management. The AI can detect various materials such as plastic, paper, glass, and organic waste, 
+            ensuring that each type is processed appropriately.
+        </p>
+        <p>
+            With AI, we can reduce human error, streamline waste sorting, and improve recycling rates. The system 
+            learns from each waste item it processes, continually improving its accuracy and efficiency over time. 
+            This helps communities and businesses minimize their environmental footprint while optimizing waste management.
+        </p>
+        <p>
+            Our AI-based solutions also enable real-time data collection, giving us the ability to track waste patterns 
+            and adjust collection methods for maximum efficiency.
+        </p>
+    </section>
+
+    <section id="about" style="padding: 40px 20px; background-color: #ffffff;">
+        <div style="max-width: 800px; margin: auto; text-align: center;">
+            <h2 style="color: #007bff; margin-bottom: 20px;">About Smart Waste Management</h2>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                At Smart Waste Management, we are committed to revolutionizing the way waste is collected, processed, and repurposed. 
+                Our mission is to create sustainable, efficient, and technology-driven solutions that empower communities and businesses 
+                to minimize their environmental footprint while optimizing waste management operations.
+            </p>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                By leveraging innovative technologies such as IoT, AI, and data analytics, we aim to streamline waste management processes, 
+                reduce costs, and promote recycling and reuse. Our solutions are designed to create cleaner cities, reduce landfill dependency, 
+                and foster a culture of environmental responsibility.
+            </p>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                Join us in building a smarter, greener, and more sustainable future for everyone.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Smart Waste Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>

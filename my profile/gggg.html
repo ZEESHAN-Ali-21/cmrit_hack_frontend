@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Identification</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"], button {
+            margin: 15px 0;
+            padding: 10px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        input[type="file"]:hover, button:hover {
+            background-color: #e8f5e9;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #imageContainer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Waste Identification</h1>
+    <p>Upload an image of your waste to identify its type.</p>
+
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="submitButton">Submit</button>
+    <div id="imageContainer">
+        <img id="uploadedImage" src="#" alt="Uploaded Image" hidden>
+    </div>
+
+    <div id="output">Waiting for an image...</div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const output = document.getElementById('output');
+        const submitButton = document.getElementById('submitButton');
+
+        let model;
+
+        // Load MobileNet model
+        mobilenet.load().then(loadedModel => {
+            model = loadedModel;
+            output.textContent = "Model loaded. Please upload an image.";
+        });
+
+        // Handle image upload
+        imageInput.addEventListener('change', event => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.hidden = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Classify the uploaded image on button click
+        submitButton.addEventListener('click', async () => {
+            if (uploadedImage.src && uploadedImage.src !== "#") {
+                output.textContent = "Identifying...";
+                const predictions = await model.classify(uploadedImage);
+                if (predictions.length > 0) {
+                    output.textContent = Prediction: ${predictions[0].className} (Confidence: ${(predictions[0].probability * 100).toFixed(2)}%);
+                } else {
+                    output.textContent = "Unable to identify the image. Try a clearer photo.";
+                }
+            } else {
+                output.textContent = "Please upload an image before submitting.";
+            }
+        });
+    </script>
+</body>
+</html>

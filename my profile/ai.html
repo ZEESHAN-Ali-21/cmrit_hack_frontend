@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Waste Identification</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <style>
+        /* Simplified styling for debugging */
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; }
+        h1 { color: #4CAF50; }
+        img { max-width: 100%; margin-top: 10px; }
+        #output { margin-top: 20px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>AI Waste Identification</h1>
+    <p>Upload an image of waste to identify its material type.</p>
+    <input type="file" id="imageInput" accept="image/*">
+    <button id="submitButton">Submit</button>
+    <div>
+        <img id="uploadedImage" src="#" alt="Uploaded Image" hidden>
+    </div>
+    <div id="output">Waiting for an image...</div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const output = document.getElementById('output');
+        const submitButton = document.getElementById('submitButton');
+        let model;
+
+        // Load COCO-SSD model
+        cocoSsd.load().then(loadedModel => {
+            model = loadedModel;
+            console.log("Model loaded successfully!");
+            output.textContent = "Model loaded. Please upload an image.";
+        }).catch(error => {
+            console.error("Error loading COCO-SSD model:", error);
+            output.textContent = "Failed to load the model. Check console for details.";
+        });
+
+        // Handle image upload
+        imageInput.addEventListener('change', event => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.hidden = false;
+                    console.log("Image uploaded successfully.");
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.error("No file selected.");
+                output.textContent = "Please select an image file.";
+            }
+        });
+
+        // Detect waste material type
+        submitButton.addEventListener('click', async () => {
+            if (!model) {
+                output.textContent = "Model not loaded yet. Please wait.";
+                console.error("Model not loaded.");
+                return;
+            }
+            if (uploadedImage.src === "#" || uploadedImage.hidden) {
+                output.textContent = "Please upload an image before submitting.";
+                console.warn("No image to classify.");
+                return;
+            }
+            output.textContent = "Identifying waste materials...";
+            try {
+                const predictions = await model.detect(uploadedImage);
+                console.log("Predictions:", predictions);
+
+                if (predictions.length > 0) {
+                    let resultText = "Detected materials:\n";
+                    predictions.forEach(prediction => {
+                        resultText += `- ${prediction.class} (Confidence: ${(prediction.score * 100).toFixed(2)}%)\n`;
+                    });
+                    output.textContent = resultText;
+                } else {
+                    output.textContent = "No recognizable waste materials found.";
+                }
+            } catch (error) {
+                console.error("Error during detection:", error);
+                output.textContent = "An error occurred during detection. Check console for details.";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("https://media.istockphoto.com/id/1455668147/photo/zero-waste-net-zero-concept-carbon-neutral-climate-neutral-long-term-strategy-sustainable.jpg?s=612x612&w=0&k=20&c=YBrE2lS9cmI2n0ELPYFNCNtZ9feyMV-N9sCrJi4LWNg=");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9); /* Slight transparency for better readability */
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+        
+       
+
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        form input[type="email"], 
+        form input[type="password"], 
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reset Password</h1>
+        <form id="resetPasswordForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="newPassword" placeholder="Enter new password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+          
+            <button type="button" onclick="location.href='fin.html'">Reset password</a>
+
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('resetPasswordForm');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const newPassword = document.getElementById('newPassword').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            // Basic validation
+            if (!email) {
+                showMessage("Please enter your email address.", true);
+                return;
+            }
+            if (newPassword.length < 8) {
+                showMessage("Password must be at least 8 characters long.", true);
+                return;
+            }
+            if (newPassword !== confirmPassword) {
+                showMessage("Passwords do not match. Please try again.", true);
+                return;
+            }
+
+            // Simulate API call to reset password
+            simulatePasswordReset(email, newPassword)
+                .then(() => {
+                    showMessage("Password has been reset successfully!", false);
+                })
+                .catch((error) => {
+                    showMessage(error, true);
+                });
+        });
+
+        function showMessage(msg, isError) {
+            message.textContent = msg;
+            message.className = isError ? 'message error' : 'message';
+        }
+
+        // Simulated API call (replace with actual backend API integration)
+        function simulatePasswordReset(email, password) {
+            return new Promise((resolve, reject) => {
+                // Simulate success or failure
+                setTimeout(() => {
+                    if (email === "test@example.com") {
+                        resolve(); // Simulate success
+                    } else {
+                        reject("Email not found in the system."); // Simulate error
+                    }
+                }, 1000); // Simulated delay
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management Gamification</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #full-screen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            animation: fadeInBackground 2s ease-out;
+        }
+    </style>
+    
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+    <img id="full-screen-image" src="https://t3.ftcdn.net/jpg/10/33/25/46/360_F_1033254611_khJ3TrF7s2fQrx6EQAjUKaSPxXDa73F2.jpg" alt="Smart Waste Management">
+    <div id="main-container" class="max-w-4xl mx-auto py-10 px-6 bg-white shadow-lg rounded-lg">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-green-600">Gamify Your Sustainability Journey</h1>
+            <p class="text-gray-600 mt-2">Earn points and contribute to a better planet!</p>
+        </header>
+
+        <section id="tasks" class="space-y-6">
+            <h2 class="text-2xl font-semibold text-blue-700">Tasks to Earn Points</h2>
+            <button id="start-quiz" class="btn-task">Answer Sustainability Quiz</button>
+            <button id="log-recycling" class="btn-task">Log Recycling Activity</button>
+        </section>
+
+        <section id="points-container" class="mt-10">
+            <h3 class="text-xl font-medium text-green-700">Your Points: <span id="points">0</span></h3>
+            <progress id="progress-bar" class="w-full mt-3" value="0" max="100"></progress>
+            <p id="progress-text" class="text-gray-600 mt-1">0/100 Points</p>
+        </section>
+
+        <section id="interaction-container" class="mt-10">
+            <!-- Dynamic Interaction Content (Quiz or Recycling Form) -->
+        </section>
+
+        <!-- Loading Animation -->
+        <div id="loading" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <style>
+        /* Task Button Styling */
+        .btn-task {
+            display: inline-block;
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .btn-task:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Loader Styling */
+        .loader {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #4caf50;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    <script src="app.js"></script>
+</body>
+</html>

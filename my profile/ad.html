@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #e9ecef;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .contact-section {
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .contact-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+        }
+        .contact-form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+        .contact-info {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 30px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .map {
+            max-width: 600px;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Smart Waste Management </h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Discover Amazing Features</h1>
+        <p>Your journey to better solutions starts here.</p>
+    </div>
+    <section id="about" style="padding: 40px 20px; background-color: #ffffff;">
+        <div style="max-width: 800px; margin: auto; text-align: center;">
+            <h2 style="color: #007bff; margin-bottom: 20px;">About Smart Waste Management</h2>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                At Smart Waste Management, we are committed to revolutionizing the way waste is collected, processed, and repurposed. 
+                Our mission is to create sustainable, efficient, and technology-driven solutions that empower communities and businesses 
+                to minimize their environmental footprint while optimizing waste management operations.
+            </p>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                By leveraging innovative technologies such as IoT, AI, and data analytics, we aim to streamline waste management processes, 
+                reduce costs, and promote recycling and reuse. Our solutions are designed to create cleaner cities, reduce landfill dependency, 
+                and foster a culture of environmental responsibility.
+            </p>
+            <p style="font-size: 1.2em; color: #555; line-height: 1.6;">
+                Join us in building a smarter, greener, and more sustainable future for everyone.
+            </p>
+        </div>
+    </section>
+    
+    
+
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <form action="#" method="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone (optional)</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="message">Message/Inquiry</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Address:</strong> 123 Main Street, City, Country</p>
+            <p><strong>Phone:</strong> +123 456 7890</p>
+            <p><strong>Email:</strong> info@example.com</p>
+            <p><strong>Business Hours:</strong> Mon-Fri, 9 AM - 6 PM</p>
+        </div>
+
+        <!-- Location Map -->
+        <div class="map">
+            <h3>Our Location</h3>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093746!2d144.95373531544712!3d-37.816279742021024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf57798f2d1fd3e58!2s123%20Main%20Street!5e0!3m2!1sen!2sus!4v1696958301986!5m2!1sen!2sus"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+    
+        <!-- Types of Waste Management Services -->
+        <div class="service-category">
+            <h3>Types of Waste Management Services</h3>
+            <ul>
+                <li><strong>Residential Waste Collection:</strong> Efficient waste collection for homes, ensuring timely pickups and eco-friendly disposal methods.</li>
+                <li><strong>Commercial Waste Management:</strong> Customized waste management solutions for businesses, including regular pickups and waste sorting.</li>
+                <li><strong>Industrial Waste Solutions:</strong> Specialized waste management services for industrial sectors, focusing on safe disposal of hazardous and non-hazardous waste.</li>
+                <li><strong>Recycling Services:</strong> Comprehensive recycling solutions, including paper, plastic, and metal recycling to promote sustainability.</li>
+                <li><strong>E-Waste Management:</strong> Secure disposal and recycling of electronic waste to reduce environmental impact.</li>
+            </ul>
+        </div>
+    
+        <!-- Smart Technology Services -->
+        <div class="service-category">
+            <h3>Smart Technology Services</h3>
+            <ul>
+                <li><strong>IoT-Enabled Waste Tracking:</strong> Track waste bins in real-time to optimize collection routes and improve operational efficiency.</li>
+                <li><strong>Real-Time Bin Monitoring:</strong> Use sensors to monitor waste levels and ensure timely collection, preventing overflow and inefficiency.</li>
+                <li><strong>Waste Segregation Technology:</strong> Advanced technology to automatically sort different types of waste at the source for easier recycling.</li>
+                <li><strong>Smart Route Optimization for Collection Vehicles:</strong> AI-driven algorithms to optimize collection routes, reducing fuel consumption and improving service efficiency.</li>
+                <li><strong>Digital Waste Management Reporting:</strong> Real-time data on waste collection, recycling rates, and other key performance indicators to improve transparency and sustainability.</li>
+            </ul>
+        </div>
+    
+        <!-- Specialized Services -->
+        <div class="service-category">
+            <h3>Specialized Services</h3>
+            <ul>
+                <li><strong>Waste Audit and Analysis:</strong> Detailed audits of waste generation and disposal practices to identify opportunities for waste reduction.</li>
+                <li><strong>Customized Waste Reduction Strategies:</strong> Tailored plans for reducing waste generation in households, businesses, or industries.</li>
+                <li><strong>Sustainability Consulting:</strong> Expert advice on sustainability practices, including waste minimization and resource conservation.</li>
+                <li><strong>Waste-to-Energy Solutions:</strong> Transform waste into renewable energy, reducing landfill use and contributing to clean energy goals.</li>
+                <li><strong>Composting Services:</strong> Eco-friendly composting solutions for organic waste, reducing landfill burden and promoting nutrient recycling.</li>
+            </ul>
+        </div>
+    
+        <!-- Digital Platform Features -->
+        <div class="service-category">
+            <h3>Digital Platform Features</h3>
+            <ul>
+                <li><strong>Mobile App for Waste Collection Scheduling:</strong> Allow users to schedule pickups, track waste collection, and set reminders through an easy-to-use mobile app.</li>
+                <li><strong>Waste Collection Tracking:</strong> Provide real-time tracking of waste collection services to ensure efficiency and transparency.</li>
+                <li><strong>Recycling Incentive Programs:</strong> Encourage recycling through rewards programs, fostering community participation in sustainability efforts.</li>
+                <li><strong>Waste Reduction Recommendations:</strong> Offer tailored tips and suggestions to households and businesses on how to minimize waste generation.</li>
+                <li><strong>Community Engagement Tools:</strong> Platforms for public education, events, and sustainability campaigns to promote active community involvement in waste management.</li>
+            </ul>
+        </div>
+    
+        <!-- Environmental Impact Services -->
+        <div class="service-category">
+            <h3>Environmental Impact Services</h3>
+            <ul>
+                <li><strong>Carbon Footprint Reduction Assistance:</strong> Help businesses and communities reduce their carbon footprint through better waste management practices.</li>
+                <li><strong>Recycling Rate Improvement:</strong> Initiatives and consulting to increase the recycling rates in communities and businesses.</li>
+                <li><strong>Waste Minimization Consulting:</strong> Strategies to help companies and individuals reduce overall waste generation.</li>
+                <li><strong>Environmental Compliance Support:</strong> Assistance in meeting local environmental regulations and ensuring sustainability efforts are compliant.</li>
+                <li><strong>Green Initiative Development:</strong> Consulting to develop green policies and programs that promote environmental sustainability in waste management.</li>
+            </ul>
+        </div>
+    
+        <!-- Training and Education -->
+        <div class="service-category">
+            <h3>Training and Education</h3>
+            <ul>
+                <li><strong>Waste Segregation Workshops:</strong> Educational workshops for individuals and businesses to teach proper waste segregation techniques.</li>
+                <li><strong>Corporate Sustainability Training:</strong> Training sessions for businesses to integrate sustainability and eco-friendly practices into their operations.</li>
+                <li><strong>Community Awareness Programs:</strong> Initiatives to educate the public on proper waste management and recycling practices.</li>
+                <li><strong>Educational Webinars:</strong> Online seminars to inform and engage people on various waste management and sustainability topics.</li>
+                <li><strong>School and College Engagement Initiatives:</strong> Programs to engage students in learning about waste management and sustainability efforts.</li>
+            </ul>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2024 Our Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
