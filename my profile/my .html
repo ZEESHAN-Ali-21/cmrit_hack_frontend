@@ -4,42 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Waste Identification</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs">
-        const locationInput = document.getElementById('location');
-        const fetchLocationButton = document.getElementById('fetchLocation');
-
-        fetchLocationButton.addEventListener('click', () => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    const { latitude, longitude } = position.coords;
-                    locationInput.value = `Lat: ${latitude}, Lng: ${longitude}`;
-                }, error => {
-                    locationInput.value = "Unable to fetch location.";
-                    console.error(error);
-                });
-            } else {
-                locationInput.value = "Geolocation not supported.";
-            }
-        });
-    
-        const locationInput = document.getElementById('location');
-        const fetchLocationButton = document.getElementById('fetchLocation');
-
-        fetchLocationButton.addEventListener('click', () => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    const { latitude, longitude } = position.coords;
-                    locationInput.value = `Lat: ${latitude}, Lng: ${longitude}`;
-                }, error => {
-                    locationInput.value = "Unable to fetch location.";
-                    console.error(error);
-                });
-            } else {
-                locationInput.value = "Geolocation not supported.";
-            }
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,11 +16,13 @@
 
         h1 {
             color: #4CAF50;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
         }
 
-        p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
         }
 
         input[type="file"], button {
@@ -95,43 +62,6 @@
         #imageContainer {
             margin-top: 20px;
         }
-
-        form {
-            margin-top: 30px;
-            text-align: left;
-            display: inline-block;
-        }
-
-        form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        form input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        form button {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-            border: none;
-            border-radius: 5px;
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        form button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
@@ -139,27 +69,18 @@
     <p>Upload an image of your waste to identify its type.</p>
 
     <input type="file" id="imageInput" accept="image/*">
-    <button id="submitButton">Submit</button>
+    <button id="submitButton" class="btn btn-success">Submit</button>
     <div id="imageContainer">
         <img id="uploadedImage" src="#" alt="Uploaded Image" hidden>
     </div>
 
     <div id="output">Waiting for an image...</div>
 
-
     <script>
         const imageInput = document.getElementById('imageInput');
         const uploadedImage = document.getElementById('uploadedImage');
         const output = document.getElementById('output');
         const submitButton = document.getElementById('submitButton');
-
-        let model;
-
-        // Load MobileNet model
-        mobilenet.load().then(loadedModel => {
-            model = loadedModel;
-            output.textContent = "Model loaded. Please upload an image.";
-        });
 
         // Handle image upload
         imageInput.addEventListener('change', event => {
@@ -174,21 +95,41 @@
             }
         });
 
-        // Classify the uploaded image on button click
-        const detailsForm = document.getElementById('detailsForm');
+        // Handle form submission
         submitButton.addEventListener('click', async () => {
-            if (uploadedImage.src && uploadedImage.src !== "#") {
-                output.textContent = "Identifying...";
-                const predictions = await model.classify(uploadedImage);
-                if (predictions.length > 0) {
-                    output.textContent = `Prediction: ${predictions[0].className} (Confidence: ${(predictions[0].probability * 100).toFixed(2)}%)`;
-                } else {
-                    output.textContent = "Unable to identify the image. Try a clearer photo.";
-                }
-            } else {
+            if (imageInput.files.length === 0) {
                 output.textContent = "Please upload an image before submitting.";
+                return;
+            }
+
+            output.textContent = "Identifying...";
+            const file = imageInput.files[0];
+
+            // Prepare the form data
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Send the image to the Flask backend
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    output.textContent = `Prediction: ${result.prediction} (Confidence: ${(result.confidence * 100).toFixed(2)}%)`;
+                } else {
+                    output.textContent = "Error in prediction. Please try again.";
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                output.textContent = "Unable to connect to the server.";
             }
         });
     </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
