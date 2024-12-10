@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #full-screen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            animation: fadeInBackground 2s ease-out;
+        }
+        
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans">
+    <img id="full-screen-image" src="https://media.istockphoto.com/id/1498170916/photo/a-couple-is-taking-a-bag-of-food-at-the-food-and-clothes-bank.jpg?s=612x612&w=0&k=20&c=0fnD_g46lvoZ5NdzX5zYOSM4PzM95ezfs5uMe9D1QKs=" alt="Smart Waste Management">
+    <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-green-600">Donation Platform</h1>
+            <p class="text-lg text-gray-600 mt-2">Choose a category and donate today!</p>
+        </header>
+
+        <!-- Donation Options -->
+        <div class="space-y-6">
+            <!-- Donate Clothes -->
+            <div class="flex items-center justify-between bg-gray-50 p-6 shadow-md rounded-lg hover:shadow-lg transition-shadow">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-600">Donate Clothes</h2>
+                    <p class="text-gray-600">Help someone in need by donating your second-hand clothes.</p>
+                </div>
+                <a href="doantioncloths.html" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">Donate Now</a>
+            </div>
+
+            <!-- Donate Books -->
+            <div class="flex items-center justify-between bg-gray-50 p-6 shadow-md rounded-lg hover:shadow-lg transition-shadow">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-600">Donate Books</h2>
+                    <p class="text-gray-600">Give the gift of knowledge by donating used books to schools or NGOs.</p>
+                </div>
+                <a href="donationbook.html" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">Donate Now</a>
+            </div>
+
+            <!-- Donate Food -->
+            <div class="flex items-center justify-between bg-gray-50 p-6 shadow-md rounded-lg hover:shadow-lg transition-shadow">
+                <div>
+                    <h2 class="text-xl font-bold text-blue-600">Donate Food</h2>
+                    <p class="text-gray-600">Avoid food waste by donating leftovers to shelters or food banks.</p>
+                </div>
+                <a href="donationfood.html" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition">Donate Now</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

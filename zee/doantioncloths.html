@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Clothes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         #full-screen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            animation: fadeInBackground 2s ease-out;
+        }
+        .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+        .btn-submit {
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(90deg, #45a049, #4caf50);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+<img id="full-screen-image" src="data:image/jpeg;base64,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">
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto py-10 px-6 bg-white shadow-lg rounded-lg">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-green-600">Donate Clothes</h1>
+            <p class="text-gray-600 mt-2">Fill out the form below to donate your clothes.</p>
+        </header>
+
+        <!-- Form -->
+        <form class="space-y-6">
+            <div>
+                <label for="name" class="block text-gray-700 font-medium">Your Name:</label>
+                <input type="text" id="name" class="w-full mt-2 p-2 border rounded-md" placeholder="John Doe" required>
+            </div>
+
+            <div>
+                <label for="email" class="block text-gray-700 font-medium">Email Address:</label>
+                <input type="email" id="email" class="w-full mt-2 p-2 border rounded-md" placeholder="john.doe@example.com" required>
+            </div>
+
+            <div>
+                <label for="clothes-type" class="block text-gray-700 font-medium">Type of Clothes:</label>
+                <input type="text" id="clothes-type" class="w-full mt-2 p-2 border rounded-md" placeholder="Shirts, Jeans, etc." required>
+            </div>
+
+            <div>
+                <label for="quantity" class="block text-gray-700 font-medium">Quantity:</label>
+                <input type="number" id="quantity" class="w-full mt-2 p-2 border rounded-md" placeholder="Number of items" required>
+            </div>
+
+            <div>
+                <label for="address" class="block text-gray-700 font-medium">Pickup Address:</label>
+                <textarea id="address" class="w-full mt-2 p-2 border rounded-md" placeholder="123 Main Street, City" rows="3" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" onclick="alert('donation successful!!')">Submit Donation</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -33,6 +33,7 @@
             overflow-y: auto;
             padding: 30px;
             animation: fadeInContent 1.5s ease-out;
+            padding-top: 80px; /* Prevents overlap with navbar */
         }
 
         section {
@@ -56,6 +57,10 @@
             z-index: 1;
         }
 
+        .nav-item {
+            text-align: left;
+        }
+
         footer {
             z-index: 1;
             background-color: #333;
@@ -64,10 +69,12 @@
             padding: 20px;
         }
 
+        /* Custom Dark Green Navbar */
         .navbar-dark.bg-darkgreen {
             background-color: #006400; /* Dark green */
         }
 
+        /* Animations */
         @keyframes fadeInBackground {
             0% {
                 opacity: 0;
@@ -96,6 +103,33 @@
                 opacity: 1;
             }
         }
+
+        /* Hover effects */
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00; /* Yellow color for hover */
+            transform: scale(1.1);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .container form input,
+        .container form textarea {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .container form input:focus,
+        .container form textarea:focus {
+            border-color: #006400;
+            box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -109,11 +143,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showSection('Gamification')">Gamification</a>
+                        <a class="nav-link" href="index.html">Gamification</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showSection('Donation')">Donation</a>
+                        <a class="nav-link" href="donation.html">Donation</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="showSection('about')">About</a>
                     </li>
@@ -129,33 +164,77 @@
     </nav>
 
     <img id="full-screen-image" src="https://t3.ftcdn.net/jpg/10/33/25/46/360_F_1033254611_khJ3TrF7s2fQrx6EQAjUKaSPxXDa73F2.jpg" alt="Smart Waste Management">
-    
+
     <div class="content">
-        <!-- About Section -->
-        <section id="about" class="active">
-            <div class="container text-center mb-4">
-                <a href="https://example.com/scan" class="btn btn-success">
-                    Scan Here
-                </a>
+        <!-- Gamification Section (Linked to index.html) -->
+        <section id="Gamefication">
+            <div class="container">
+                <a href="index.html">Gamification</a> <!-- Link to index.html -->
             </div>
+        </section>
+        <div class="content">
+            <!-- Gamification Section (Linked to index.html) -->
+            <section id="Donation">
+                <div class="container">
+                    <a href="donation.html">Donation</a> <!-- Link to index.html -->
+                </div>
+            </section>
+        
+        <!-- About Section (No changes to text layout) -->
+        <section id="about">
             <div class="container">
                 <h2 class="text-center">About Us</h2>
                 <p>At Smart Waste Management, we are dedicated to transforming waste management into an efficient, sustainable, and technologically-driven process. Our mission is to provide innovative solutions that address the growing challenges of waste disposal and environmental sustainability.</p>
+                <p>We combine cutting-edge technologies like Internet of Things (IoT), Artificial Intelligence (AI), and Data Analytics to optimize waste collection, reduce landfill dependency, and promote recycling and reuse. Our services cater to various sectors, including residential, commercial, and industrial waste management.</p>
+                <p>Our team of experts works tirelessly to create eco-friendly and sustainable solutions, aiming for cleaner cities, reduced environmental impact, and more efficient waste management practices. We strive to make waste management smarter, reducing operational costs and contributing to a more sustainable future.</p>
+                <p>Join us on our journey toward a greener and smarter future. Together, we can make a significant impact in shaping a cleaner, waste-free world.</p>
             </div>
         </section>
 
-        <!-- Other Sections -->
+        <!-- Services Section (No changes to text layout) -->
         <section id="services">
             <div class="container">
                 <h2 class="text-center">Our Services</h2>
-                <p>We offer a wide range of services designed to make waste management smarter, more efficient, and eco-friendly.</p>
+                <p>We offer a wide range of services designed to make waste management smarter, more efficient, and eco-friendly. Whether you need regular waste collection for your home, specialized waste management for your business, or solutions for large-scale industrial waste, we have a service to fit your needs.</p>
+                <ul>
+                    <li>Residential Waste Collection</li>
+                    <li>Commercial Waste Management</li>
+                    <li>Industrial Waste Solutions</li>
+                    <li>Recycling Services</li>
+                    <li>E-Waste Management</li>
+                    <li>Waste-to-Energy Solutions</li>
+                    <li>Composting Services</li>
+                    <li>Smart Technology Services</li>
+                    <li>Waste Audit and Analysis</li>
+                    <li>Customized Waste Reduction Strategies</li>
+                    <li>Sustainability Consulting</li>
+                </ul>
             </div>
         </section>
 
+        <!-- Contact Section (No changes to text layout) -->
         <section id="contact">
             <div class="container">
                 <h2 class="text-center">Contact Us</h2>
-                <p>Feel free to reach out to us for any inquiries.</p>
+                <form class="mx-auto mt-4" style="max-width: 500px;">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </form>
+                <div class="text-center mt-4">
+                    <p><strong>Address:</strong> NHCE, Bengaluru, India</p>
+                    <p><strong>Email:</strong> zeeshanali9757@gmail.com</p>
+                </div>
             </div>
         </section>
     </div>
@@ -170,14 +249,18 @@
 
     <script>
         function showSection(sectionId) {
+            // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(section => section.classList.remove('active'));
+
+            // Show the selected section
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active');
             }
         }
 
+        // Show the "Gamification" section by default
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('about').classList.add('active');
         });
